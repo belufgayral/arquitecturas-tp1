@@ -10,8 +10,11 @@ public class MySQLConexion {
 	private static String uri = "jdbc:mysql://localhost:3306/tp1?createDatabaseIfNotExist=true";
 	private static String user = "root";
 	private static String password = "admin";
-	
 	private static Connection conexion;
+	
+	private MySQLConexion() {
+		//para que nadie a pueda instanciar desde afuera..
+	}
 	
 	public static Connection getConexion() {
 		if (conexion == null) {
@@ -20,7 +23,7 @@ public class MySQLConexion {
 		return conexion;
 	}
 	
-	public static void instanciar() {
+	private static void instanciar() {
 		try {
 			Class.forName(driver).getDeclaredConstructor().newInstance();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
@@ -28,7 +31,6 @@ public class MySQLConexion {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		
 		try {
 			Connection conn = DriverManager.getConnection(uri, user, password);
 		} catch (SQLException e) {
