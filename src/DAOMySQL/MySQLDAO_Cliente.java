@@ -9,7 +9,7 @@ public class MySQLDAO_Cliente implements ClienteDAO {
 	@Override
 	public void addCliente(Cliente c) {
 		Connection conn = MySQLconexion.getConexion();
-		String insert = "INSERT into CLIENTE (idCliente, nombre, email) VALUES (?, ?, ?";
+		String insert = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?, ?, ?)";
 		PreparedStatement ps = conn.prepareStatement(insert);
 		ps.setInt(1, c.getId());
 		ps.setString(2, c.getNombre());
@@ -21,11 +21,12 @@ public class MySQLDAO_Cliente implements ClienteDAO {
 	@Override
 	public void updateCliente(Cliente c) {
 		Connection conn =  MySQLconexion.getConexion();
-		String update = "UPDATE cliente SET idCliente = ?, nombre = ?, email = ?";
+		String update = "UPDATE cliente SET nombre = ?, email = ?" +
+						"WHERE idCliente = ?";
 		PreparedStatement ps = conn.prepareStatement(update);
-		ps.setInt(1, c.getId());
-		ps.setString(2, c.getNombre());
-		ps.setString(3, c.getEmail());
+		ps.setString(1, c.getNombre());
+		ps.setString(2, c.getEmail());
+		ps.setInt(3, c.getId());
 		ps.executeUpdate();
 		ps.close();
 
@@ -43,18 +44,20 @@ public class MySQLDAO_Cliente implements ClienteDAO {
 
 	}
 
+	//falta asociar con factura para listar por factura
 	@Override
-	public String listarClientes() {
+	public List<String> listarClientes() {
 		Connection conn = MySQLconexion.getConexion();
+		List<String> lista = new ArrayList<String>();
+
 		String select = "SELECT * FROM cliente";
 		PreparedStatement ps = conn.prepareStatement(select);
 		ResultSet rs =   ps.executeQuery();
-		while (rs.next()){
-			System.out.println((rs.getInt(1) +", "+ rs.getString(2) +", " + rs.getString(3)));
+		while (rs.next()) {
+			lista.add(("ID: "rs.getInt(1) + ", Nombre: " + rs.getString(2) + ", Email: " + rs.getString(3)));
 		}
 
-
-		return null;
+		return lista;
 	}
 
 }

@@ -7,14 +7,26 @@ public class MySQLDAO_Factura implements FacturaDAO {
 
 	@Override
 	public void addFactura(Factura f) {
-		// TODO Auto-generated method stub
+		Connection conn = MySQLconexion.getConexion();
+		String insert = "INSERT INTO factura (idCliente, idFactura) VALUES (?, ?)";
+		PreparedStatement ps = conn.prepareStatement(insert);
+		ps.setInt(1, f.getIdCliente());
+		ps.setInt(2, f.getIdFactura());
+		ps.executeUpdate();
+		ps.close();
 		
 	}
 
 	@Override
 	public void updateFactura(Factura f) {
-		// TODO Auto-generated method stub
-		
+		Connection conn = MySQLconexion.getConexion();
+		String update = "UPDATE factura SET idCliente = ?" +
+				"WHERE idFactura = ?";
+		PreparedStatement ps = conn.prepareStatement(update);
+		ps.setInt(1, f.getIdCliente());
+		ps.setInt(2, f.getIdFactura());
+		ps.executeUpdate();
+		ps.close();
 	}
 
 	@Override
