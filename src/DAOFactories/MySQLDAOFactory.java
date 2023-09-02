@@ -1,6 +1,7 @@
 package DAOFactories;
 
 import DAO.*;
+import Helpers.MySQLTablas;
 
 public class MySQLDAOFactory extends DAOFactory {
 
@@ -27,5 +28,4 @@ public class MySQLDAOFactory extends DAOFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
