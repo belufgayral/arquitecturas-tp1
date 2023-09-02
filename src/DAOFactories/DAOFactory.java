@@ -1,5 +1,7 @@
 package DAOFactories;
 
+import java.sql.SQLException;
+
 import DAO.*;
 
 public abstract class DAOFactory {
@@ -13,7 +15,7 @@ public abstract class DAOFactory {
 	public abstract ProductoDAO getProductoDAO();
 	
 	//switch 
-	public static DAOFactory getDAOFactory(String db) {
+	public static DAOFactory getDAOFactory(String db) throws SQLException {
 		switch(db) {
 			case MYSQL : {
 				if (mySQLDAOFactory == null) 

@@ -1,20 +1,16 @@
 package DAOFactories;
 
+import java.sql.SQLException;
 import java.util.List;
-
 import DAO.*;
-<<<<<<< HEAD
 import Helpers.MySQLTablas;
-=======
 import Entidades.*;
 import DAOMySQL.*;
-import Helpers.MySQLTablas;
 import Helpers.Generador;
->>>>>>> 7a664ef4d9ab8b61b87867ea7b678e69af3ada67
 
 public class MySQLDAOFactory extends DAOFactory {
 	
-	protected MySQLDAOFactory() {
+	protected MySQLDAOFactory() throws SQLException {
 		poblarTablas();
 	}
 
@@ -38,14 +34,14 @@ public class MySQLDAOFactory extends DAOFactory {
 		return new MySQLDAO_Producto();
 	}
 	
-	public void poblarTablas() {
+	public void poblarTablas() throws SQLException {
 		poblarTablaCliente();
 		poblarTablaFactura();
 		poblarTablaFacturaProducto();
 		poblarTablaProducto();
 	}
 	
-	public void poblarTablaCliente() {
+	public void poblarTablaCliente() throws SQLException {
 		MySQLTablas.createTablaCliente();
 		List<Cliente> clientes = Generador.clientesCSV();
 		for (int i = 0; i < clientes.size(); i++) {
@@ -53,7 +49,7 @@ public class MySQLDAOFactory extends DAOFactory {
 		}
 	}
 	
-	public void poblarTablaFactura() {
+	public void poblarTablaFactura() throws SQLException {
 		MySQLTablas.createTablaFactura();
 		List<Factura> facturas = Generador.facturasCSV();
 		for (int i = 0; i < facturas.size(); i++) {

@@ -1,10 +1,12 @@
 package DAO;
 
+import java.sql.SQLException;
+
 import Entidades.Factura;
 
 public interface FacturaDAO {
 	
-	public void addFactura(Factura f);
-	public void updateFactura(Factura f);
+	public void addFactura(Factura f) throws SQLException;
+	public void updateFactura(Factura f) throws SQLException;
 	public void deleteFactura(Factura f);
 }

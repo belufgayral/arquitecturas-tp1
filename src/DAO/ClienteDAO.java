@@ -1,12 +1,13 @@
 package DAO;
 
+import java.sql.SQLException;
+import java.util.List;
 import Entidades.Cliente;
 
 public interface ClienteDAO {
 	
-	public void addCliente(Cliente c);
-	public void updateCliente(Cliente c);
-	public void deleteCliente(Cliente c);
-	//Escriba un programa JDBC que imprima una lista de clientes, ordenada por a cuál se le facturó más:
-	public String listarClientes();
+	public void addCliente(Cliente c) throws SQLException;
+	public void updateCliente(Cliente c) throws SQLException;
+	public void deleteCliente(Cliente c) throws SQLException;
+	public List<String> listarClientes() throws SQLException;
 }
