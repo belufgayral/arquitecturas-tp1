@@ -7,14 +7,14 @@ import DAO.*;
 public abstract class DAOFactory {
 	public static final String MYSQL = "mysql";
 	
-	public static MySQLDAOFactory mySQLDAOFactory;
+	private static MySQLDAOFactory mySQLDAOFactory;
 	
 	public abstract ClienteDAO getClienteDAO();
 	public abstract FacturaDAO getFacturaDAO();
 	public abstract FacturaProductoDAO getFacturaProductoDAO();
 	public abstract ProductoDAO getProductoDAO();
 	
-	//switch 
+	//switch con Singleton
 	public static DAOFactory getDAOFactory(String db) throws SQLException {
 		switch(db) {
 			case MYSQL : {

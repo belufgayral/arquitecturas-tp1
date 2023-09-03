@@ -9,6 +9,10 @@ import DAOMySQL.*;
 import Helpers.Generador;
 
 public class MySQLDAOFactory extends DAOFactory {
+	private static MySQLDAO_Cliente mySQLDAOCliente;
+	private static MySQLDAO_Factura mySQLDAOFactura;
+	private static MySQLDAO_FacturaProducto mySQLDAOFacturaProducto;
+	private static MySQLDAO_Producto mySQLDAOProducto;
 	
 	protected MySQLDAOFactory() throws SQLException {
 		poblarTablas();
@@ -16,22 +20,30 @@ public class MySQLDAOFactory extends DAOFactory {
 
 	@Override
 	public ClienteDAO getClienteDAO() {
-		return new MySQLDAO_Cliente();
+		if (mySQLDAOCliente == null)
+			mySQLDAOCliente = new MySQLDAO_Cliente();
+		return mySQLDAOCliente;
 	}
 
 	@Override
 	public FacturaDAO getFacturaDAO() {
-		return new MySQLDAO_Factura();
+		if (mySQLDAOFactura == null)
+			mySQLDAOFactura = new MySQLDAO_Factura();
+		return mySQLDAOFactura;
 	}
 
 	@Override
 	public FacturaProductoDAO getFacturaProductoDAO() {
-		return new MySQLDAO_FacturaProducto();
+		if (mySQLDAOFacturaProducto == null)
+			mySQLDAOFacturaProducto = new MySQLDAO_FacturaProducto();
+		return mySQLDAOFacturaProducto;
 	}
 
 	@Override
 	public ProductoDAO getProductoDAO() {
-		return new MySQLDAO_Producto();
+		if (mySQLDAOProducto == null)
+			mySQLDAOProducto = new MySQLDAO_Producto();
+		return mySQLDAOProducto;
 	}
 	
 	public void poblarTablas() throws SQLException {
