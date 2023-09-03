@@ -20,7 +20,7 @@ public class MySQLDAO_Producto implements ProductoDAO {
 			ps.setFloat(3, p.getValor());
 			ps.executeUpdate();
 			ps.close();
-			MySQLConexion.getConexion().commit();
+			//MySQLConexion.getConexion().commit();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -38,7 +38,7 @@ public class MySQLDAO_Producto implements ProductoDAO {
 			ps.setInt(3, p.getIdProducto());
 			ps.executeUpdate();
 			ps.close();
-			MySQLConexion.getConexion().commit();
+			//MySQLConexion.getConexion().commit();
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.exit(1);
@@ -53,7 +53,7 @@ public class MySQLDAO_Producto implements ProductoDAO {
 			ps.setInt(1, p.getIdProducto());
 			ps.executeUpdate();
 			ps.close();
-			MySQLConexion.getConexion().commit();
+			//MySQLConexion.getConexion().commit();
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.exit(1);

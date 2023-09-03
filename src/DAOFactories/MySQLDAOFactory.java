@@ -37,8 +37,8 @@ public class MySQLDAOFactory extends DAOFactory {
 	public void poblarTablas() throws SQLException {
 		poblarTablaCliente();
 		poblarTablaFactura();
-		poblarTablaFacturaProducto();
 		poblarTablaProducto();
+		poblarTablaFacturaProducto();
 	}
 	
 	public void poblarTablaCliente() throws SQLException {

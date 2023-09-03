@@ -1,12 +1,12 @@
 package Entidades;
 
 public class Factura {
-	private int idCliente;
 	private int idFactura;
+	private int idCliente;
 	
-	public Factura(int idCliente, int idFactura) {
-		this.idCliente = idCliente;
+	public Factura(int idFactura, int idCliente) {
 		this.idFactura = idFactura;
+		this.idCliente = idCliente;
 	}
 
 	public int getIdCliente() {

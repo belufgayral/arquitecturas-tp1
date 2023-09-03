@@ -18,12 +18,12 @@ public class MySQLConexion {
 	
 	public static Connection getConexion() {
 		if (conexion == null) {
-			instanciar();
+			conexion = instanciar();
 		}
 		return conexion;
 	}
 	
-	private static void instanciar() {
+	private static Connection instanciar() {
 		try {
 			Class.forName(driver).getDeclaredConstructor().newInstance();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
@@ -33,9 +33,11 @@ public class MySQLConexion {
 		}
 		try {
 			Connection conn = DriverManager.getConnection(uri, user, password);
+			return conn;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.exit(1);
+			return null;
 		}
 	}
 }

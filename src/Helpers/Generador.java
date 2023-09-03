@@ -22,7 +22,7 @@ public class Generador {
 		CSVParser parser = null;
 		List<Cliente> clientes = new ArrayList<Cliente>();
 		try {
-			parser = CSVFormat.DEFAULT.parse(new FileReader(clientesCSV));
+			parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(clientesCSV));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

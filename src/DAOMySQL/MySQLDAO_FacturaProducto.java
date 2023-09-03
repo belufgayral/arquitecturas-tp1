@@ -20,7 +20,7 @@ public class MySQLDAO_FacturaProducto implements FacturaProductoDAO {
 			
 			ps.executeUpdate();
 			ps.close();
-			MySQLConexion.getConexion().commit();
+			//MySQLConexion.getConexion().commit();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class MySQLDAO_FacturaProducto implements FacturaProductoDAO {
 			ps.setInt(5, idProd);
 			ps.executeUpdate();
 			ps.close();
-			MySQLConexion.getConexion().commit();
+			//MySQLConexion.getConexion().commit();
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.exit(1);
@@ -59,7 +59,7 @@ public class MySQLDAO_FacturaProducto implements FacturaProductoDAO {
 			ps.setInt(2, fp.getIdProducto());
 			ps.executeUpdate();
 			ps.close();
-			MySQLConexion.getConexion().commit();
+			//MySQLConexion.getConexion().commit();
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.exit(1);
