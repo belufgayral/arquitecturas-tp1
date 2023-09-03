@@ -16,11 +16,10 @@ public class MySQLDAO_Cliente implements ClienteDAO {
 	@Override
 	public void addCliente(Cliente c) throws SQLException {
 		Connection conn = MySQLConexion.getConexion();
-		String insert = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?, ?, ?)";
+		String insert = "INSERT INTO cliente (nombre, email) VALUES (?, ?)";
 		PreparedStatement ps = conn.prepareStatement(insert);
-		ps.setInt(1, c.getId());
-		ps.setString(2, c.getNombre());
-		ps.setString(3, c.getEmail());
+		ps.setString(1, c.getNombre());
+		ps.setString(2, c.getEmail());
 		ps.executeUpdate();
 		ps.close();
 		//conn.commit();
@@ -58,7 +57,7 @@ public class MySQLDAO_Cliente implements ClienteDAO {
 	public List<String> listarClientes() throws SQLException {
 		Connection conn = MySQLConexion.getConexion();
 		List<String> lista = new ArrayList<String>();
-		String select = "SELECT * FROM cliente";
+		String select = "SELECT * FROM cliente LIMIT 5";
 		PreparedStatement ps = conn.prepareStatement(select);
 		ResultSet rs =   ps.executeQuery();
 		while (rs.next()) {

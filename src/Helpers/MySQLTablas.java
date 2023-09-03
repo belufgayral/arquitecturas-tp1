@@ -6,7 +6,7 @@ public class MySQLTablas {
 	
 	public static void createTablaCliente() {
 		String table = "CREATE TABLE IF NOT EXISTS cliente("
-						+ "idCliente INT,"
+						+ "idCliente INT AUTO_INCREMENT,"
 						+ "nombre VARCHAR(500),"
 						+ "email VARCHAR(150),"
 						+ "PRIMARY KEY(idCliente))";
@@ -20,7 +20,7 @@ public class MySQLTablas {
 	
 	public static void createTablaFactura() {
 		String table = "CREATE TABLE IF NOT EXISTS factura("
-						+ "idFactura INT,"
+						+ "idFactura INT AUTO_INCREMENT,"
 						+ "idCliente INT,"
 						+ "PRIMARY KEY(idFactura),"
 						+ "FOREIGN KEY(idCliente) REFERENCES cliente(idCliente))";
@@ -49,7 +49,7 @@ public class MySQLTablas {
 	
 	public static void createTablaProducto() {
 		String table = "CREATE TABLE IF NOT EXISTS producto("
-						+ "idProducto INT,"
+						+ "idProducto INT AUTO_INCREMENT,"
 						+ "nombre VARCHAR(45),"
 						+ "valor FLOAT,"
 						+ "PRIMARY KEY(idProducto))";
