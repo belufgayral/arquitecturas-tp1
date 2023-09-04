@@ -12,11 +12,12 @@ public class MySQLDAO_Producto implements ProductoDAO {
 
 	@Override
 	public void addProducto(Producto p) {
-		String insert = "INSERT INTO producto (nombre,valor) VALUES (?,?)";
+		String insert = "INSERT INTO producto (idProducto, nombre,valor) VALUES (?,?,?)";
 		try {
 			PreparedStatement ps = MySQLConexion.getConexion().prepareStatement(insert);
-			ps.setString(1, p.getNombre());
-			ps.setFloat(2, p.getValor());
+			ps.setInt(1, p.getIdProducto());
+			ps.setString(2, p.getNombre());		
+			ps.setFloat(3, p.getValor());
 			ps.executeUpdate();
 			ps.close();
 			//MySQLConexion.getConexion().commit();
