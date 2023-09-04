@@ -26,32 +26,6 @@ public class MySQLDAO_Cliente implements ClienteDAO {
 		//conn.commit();
 	}
 
-	@Override
-	public void updateCliente(Cliente c) throws SQLException {
-		Connection conn =  MySQLConexion.getConexion();
-		String update = "UPDATE cliente SET nombre = ?, email = ?" +
-						"WHERE idCliente = ?";
-		PreparedStatement ps = conn.prepareStatement(update);
-		ps.setString(1, c.getNombre());
-		ps.setString(2, c.getEmail());
-		ps.setInt(3, c.getId());
-		ps.executeUpdate();
-		ps.close();
-		//conn.commit();
-	}
-
-	@Override
-	public void deleteCliente(Cliente c) throws SQLException {
-		Connection conn = MySQLConexion.getConexion();
-		String delete = "DELETE FROM cliente " +
-						"WHERE idCliente = ?";
-		PreparedStatement ps = conn.prepareStatement(delete);
-		ps.setInt(1, c.getId());
-		ps.executeUpdate();
-		ps.close();
-		//conn.commit();
-	}
-
 	//Escriba un programa JDBC que imprima una lista de clientes, ordenada por a cuál se le facturó más:
 	//falta asociar con factura para listar por factura
 	@Override

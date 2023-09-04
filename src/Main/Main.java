@@ -20,7 +20,7 @@ public class Main {
 		DAOFactory mySQLDAOFactory = DAOFactory.getDAOFactory("mysql");
 		//ej 2:
 		//comentar si la poblacion de tablas ya fue hecha
-		//mySQLDAOFactory.poblarTablas();
+		mySQLDAOFactory.poblarTablas();
 
 		ClienteDAO cliente = mySQLDAOFactory.getClienteDAO();
 		ProductoDAO prod = mySQLDAOFactory.getProductoDAO();
@@ -29,6 +29,7 @@ public class Main {
 		//ej 3:
 		System.out.println("Producto con mas recaudacion: ");
 		Producto p = prod.getProductoMayorRecaudacion();
+
 		System.out.println(p);
 
 		//ej 4:

@@ -7,6 +7,4 @@ import Entidades.Factura;
 public interface FacturaDAO {
 	
 	public void addFactura(Factura f) throws SQLException;
-	public void updateFactura(Factura f) throws SQLException;
-	public void deleteFactura(Factura f);
 }

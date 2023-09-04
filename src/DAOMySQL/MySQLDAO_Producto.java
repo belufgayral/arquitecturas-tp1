@@ -28,37 +28,6 @@ public class MySQLDAO_Producto implements ProductoDAO {
 		}
 	}
 
-	@Override
-	public void updateProducto(Producto p) {
-		String update = "UPDATE producto SET nombre=?, valor=? WHERE idProducto=?";
-		try {
-			PreparedStatement ps = MySQLConexion.getConexion().prepareStatement(update);
-			ps.setString(1,p.getNombre());
-			ps.setFloat(2, p.getValor());
-			ps.setInt(3, p.getIdProducto());
-			ps.executeUpdate();
-			ps.close();
-			//MySQLConexion.getConexion().commit();
-		} catch(SQLException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-	}
-
-	@Override
-	public void deleteProducto(Producto p) {
-		String delete = "DELETE FROM producto WHERE idProducto=?";
-		try {
-			PreparedStatement ps = MySQLConexion.getConexion().prepareStatement(delete);
-			ps.setInt(1, p.getIdProducto());
-			ps.executeUpdate();
-			ps.close();
-			//MySQLConexion.getConexion().commit();
-		} catch(SQLException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-	}
 
 	@Override
 	public Producto getProductoMayorRecaudacion() {
