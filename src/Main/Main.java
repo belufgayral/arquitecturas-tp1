@@ -19,7 +19,8 @@ public class Main {
 		//ej 1:
 		DAOFactory mySQLDAOFactory = DAOFactory.getDAOFactory("mysql");
 		//ej 2:
-//		mySQLDAOFactory.poblarTablas();
+		//comentar si la poblacion de tablas ya fue hecha
+		//mySQLDAOFactory.poblarTablas();
 
 		ClienteDAO cliente = mySQLDAOFactory.getClienteDAO();
 		ProductoDAO prod = mySQLDAOFactory.getProductoDAO();
