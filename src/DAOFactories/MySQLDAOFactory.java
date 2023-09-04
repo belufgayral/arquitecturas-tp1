@@ -83,8 +83,4 @@ public class MySQLDAOFactory extends DAOFactory {
 			getProductoDAO().addProducto(productos.get(i));
 		}
 	}
-
-	public void borrarScheme(){
-
-	}
 }
