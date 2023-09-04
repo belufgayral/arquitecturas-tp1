@@ -15,7 +15,6 @@ public class MySQLDAOFactory extends DAOFactory {
 	private static MySQLDAO_Producto mySQLDAOProducto;
 	
 	protected MySQLDAOFactory() throws SQLException {
-		poblarTablas();
 	}
 
 	@Override
@@ -83,5 +82,9 @@ public class MySQLDAOFactory extends DAOFactory {
 		for (int i = 0; i < productos.size(); i++) {
 			getProductoDAO().addProducto(productos.get(i));
 		}
+	}
+
+	public void borrarScheme(){
+
 	}
 }

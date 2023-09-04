@@ -58,11 +58,20 @@ public class MySQLDAO_Cliente implements ClienteDAO {
 	public List<String> listarClientes() throws SQLException {
 		Connection conn = MySQLConexion.getConexion();
 		List<String> lista = new ArrayList<String>();
-		String select = "SELECT * FROM cliente";
+		String select =
+				"SELECT tabla.idCliente, tabla.nombre, SUM(valor) AS facturacion " +
+						"FROM (  SELECT c.idCliente, c.nombre, SUM(fp.cantidad*p.valor) AS valor FROM tp1.cliente c " +
+						"INNER JOIN tp1.factura f ON c.idCliente = f.idCliente " +
+						"INNER JOIN tp1.factura_producto fp ON f.idFactura = fp.idFactura " +
+						"INNER JOIN tp1.producto p ON fp.idProducto = p.idProducto " +
+						"GROUP BY c.idCliente, p.idProducto) as tabla " +
+						"GROUP BY tabla.idCliente, tabla.nombre " +
+						"ORDER BY facturacion desc " +
+						"LIMIT 10";
 		PreparedStatement ps = conn.prepareStatement(select);
 		ResultSet rs =   ps.executeQuery();
 		while (rs.next()) {
-			lista.add("ID: "+ rs.getInt(1) + ", Nombre: " + rs.getString(2) + ", Email: " + rs.getString(3));
+			lista.add("IDCliente: "+ rs.getInt(1) + ", Nombre: " + rs.getString(2) + ", facturacion: $" + rs.getInt(3));
 		}
 
 		return lista;

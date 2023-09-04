@@ -40,4 +40,8 @@ public class MySQLConexion {
 			return null;
 		}
 	}
+
+	public static void closeConnection() throws SQLException {
+		conexion.close();
+	}
 }

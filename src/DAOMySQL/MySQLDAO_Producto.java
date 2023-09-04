@@ -62,18 +62,19 @@ public class MySQLDAO_Producto implements ProductoDAO {
 
 	@Override
 	public Producto getProductoMayorRecaudacion() {
-		String select = "SELECT nombre,valor,COUNT(fp.cantidad*p.valor) FROM producto "
-				+ "LEFT JOIN factura_producto fp ON p.idProducto = fp.idProducto "
-				+ "GROUP BY(p.idProducto) LIMIT 1 ORDER BY DESC";
+		String select = "SELECT p.idProducto,p.nombre, p.valor FROM tp1.producto p " +
+				"LEFT JOIN tp1.factura_producto fp ON p.idProducto = fp.idProducto " +
+				"GROUP BY(p.idProducto) ORDER BY SUM(fp.cantidad)*p.valor desc LIMIT 1";
 		try {
 			PreparedStatement ps = MySQLConexion.getConexion().prepareStatement(select);
 			ResultSet rs = ps.executeQuery();
-			Producto prod = new Producto(rs.getInt(1),rs.getString(2),rs.getFloat(3));
-			//PROBAR!!!!!!!!!!!!!!!!!!!!!!!!!!
-//			ps.executeUpdate();
+			//ps.executeUpdate();
+			while(rs.next()){
+				Producto prod = new Producto(rs.getInt(1),rs.getString(2),rs.getInt(3));
+				return prod;
+			}
 			ps.close();
-			return prod;
-			//MySQLConexion.getConexion().commit();
+//			MySQLConexion.getConexion().commit();
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.exit(1);

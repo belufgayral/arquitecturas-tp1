@@ -60,4 +60,8 @@ public class MySQLTablas {
 			e.printStackTrace();
 		}
 	}
+
+	public static void deleteScheme(){
+		String delete = "drop schema tp1";
+	}
 }

@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ArqWebEntregable1" />
+        <module name="TP_1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

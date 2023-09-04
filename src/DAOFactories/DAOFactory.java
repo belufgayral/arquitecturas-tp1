@@ -13,6 +13,7 @@ public abstract class DAOFactory {
 	public abstract FacturaDAO getFacturaDAO();
 	public abstract FacturaProductoDAO getFacturaProductoDAO();
 	public abstract ProductoDAO getProductoDAO();
+	public abstract void poblarTablas() throws SQLException ;
 	
 	//switch con Singleton
 	public static DAOFactory getDAOFactory(String db) throws SQLException {
